@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1만 시간의 법칙</title>
+    <link rel="stylesheet" href="style/reset.css" />
+    <link rel="stylesheet" href="style/style.css" />
+</head>
+
+<body>
+    <main id="app">
+        <!-- 제목과 설명 -->
+        <h1>대출이자 계산기</h1>
+        <p></p>
+        <!-- //제목과 설명 -->
+
+        <!-- 전문가와 훈련시간 입력폼 -->
+        <form class="cont-inp">
+            <p class="txt-wannabe">
+                대출액:
+                <input id="inp-field" type="text" name="num" placeholder="예) 20,000,000" onkeyup="cmaComma(this)"
+                    onchange="cmaComma(this)" required />원
+            </p>
+            <p class="txt-month">
+                기간: <input id="input-month" type="text" placeholder="예) 2" required />년
+            </p>
+            <p class=" txt-time">
+                대출이자:
+                <input id="inp-time" type="text" placeholder="예) 16" required />%
+
+            </p>
+            <p class="txt-disclaimer">※법정 최고이자율은 20%입니다.</p>
+            <button type="button" class="btn-exc">
+                매월 납부할 이자는?
+            </button>
+        </form>
+        <!-- //전문가와 훈련시간 입력폼 -->
+
+        <!-- 결과 확인 화면 -->
+        <section class="cont-result">
+            <h2 class="blind">결과 확인</h2>
+            <p class="txt-wannabe">
+                <strong class="sumAll">년</strong>동안의 이자와 원금을 합산한 총액은
+                <strong class="field-result" name="num"><br></strong>원 입니다. <br>
+                매월 <strong class="time-result"></strong>
+                원씩 이자를 납부하게 됩니다.
+                <br>
+            </p>
+            <button class="btn-go">자동이체 추가</button>
+            <button class="btn-share">가계부에 추가</button>
+        </section>
+        <!-- //결과 확인 화면 -->
+
+        <!-- 회사 및 저작권 정보 -->
+        <footer class="cont-footer">
+            <img class="img-footer" src="img/xb.png" alt="" />
+            <p class="txt-footer">
+                &#8251; 본 서비스 내 이미지? 콘텐츠? 저작권 어디있는지 잘몰?루겠네요
+            </p>
+            <p>
+                수정 및 재배포? 무단? 도용? 시 법적인 문제 없?을수도?
+            </p>
+        </footer>
+        <!-- //회사 및 저작권 정보 -->
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
