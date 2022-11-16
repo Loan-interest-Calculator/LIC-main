@@ -23,6 +23,7 @@ abbr,
 acronym,
 address,
 big,
+button,
 cite,
 code,
 del,
@@ -75,7 +76,8 @@ output,
 ruby,
 section,
 time,
-video {
+video,
+input {
   margin: 0;
   padding: 0;
   border: 0;
@@ -116,6 +118,10 @@ q:after {
   content: "";
   content: none;
 }
+p {
+  word-break: keep-all;
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;

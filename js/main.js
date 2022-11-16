@@ -5,8 +5,8 @@
 // const dq = document.querySelector.bind(document);
 
 // section
-const loadingSection = document.querySelector(".cont-result-loading")
-const resultSection = document.querySelector(".cont-result")
+const loadingSection = document.querySelector(".container-result-loading")
+const resultSection = document.querySelector(".container-result")
 const modalSection = document.querySelector("#modal")
 
 // button
@@ -17,12 +17,12 @@ const shareButton = document.querySelector(".btn-share")
 
 function cmaComma(obj) {
     var firstNum = obj.value.substring(0, 1); // 첫글자 확인 변수
-    var strNum = /^[\,0-9]*$/; // 숫자와 , 만 가능
+    var numStrOnly = /^[\,0-9]*$/; // 숫자와 , 만 가능
     var str = "" + obj.value.replace(/,/gi, ''); // 콤마 제거  /[^0-9]/gi;
     var regx = new RegExp(/(-?\d+)(\d{3})/);
     var bExists = str.indexOf(".", 0);
     var strArr = str.split('.');
-    if (!strNum.test(obj.value)) {
+    if (!numStrOnly.test(obj.value)) {
         alert("숫자만 입력하십시오.\n\n특수문자와 한글/영문은 사용할수 없습니다.");
         obj.value = 1;
         obj.focus();
@@ -54,7 +54,7 @@ function commaSplit(n) {// 콤마 나누는 부분
     }
 }
 
-const rateValueConfine = document.querySelector("#inp-time")
+const rateValueConfine = document.querySelector("#input-rate")
 rateValueConfine.addEventListener('keyup', (value) => {
     rateValueConfine.value = rateValueConfine.value.replace(/\D/g, '');
     if (rateValueConfine.value > 20) {
@@ -68,41 +68,42 @@ function calculate() {
     // console.log('1')
     // doc -> 자동완성
     // qs -> 자동완성
-    const fieldValue = document.querySelector("#inp-field")
-    const timeValue = document.querySelector("#inp-time")
-    const monthValue = document.querySelector("#input-month")
-    // console.log(fieldValue, timeValue)
-    // console.log(fieldValue.value, timeValue.value)
-    console.log(typeof (fieldValue.value))
-    console.log(fieldValue.value)
-    console.log(parseInt(fieldValue.value.replaceAll(',', '')))
+    const moneyValue = document.querySelector("#input-moneyValue")
+    const rateValue = document.querySelector("#input-rate")
+    const yearValue = document.querySelector("#input-year")
+    // console.log(moneyValue, rateValue)
+    // console.log(moneyValue.value, rateValue.value)
+    console.log(typeof (moneyValue.value))
+    console.log(moneyValue.value)
+    console.log(parseInt(moneyValue.value.replaceAll(',', '')))
 
-    if (fieldValue.value === "") {
+    if (moneyValue.value === "") {
         alert("대출액을 입력해 주세요.")
         return
-    } else if (monthValue.value === "") {
+    } else if (yearValue.value === "") {
         alert("상환기간을 입력해 주세요.")
         return
-    } else if (timeValue.value === "") {
+    } else if (rateValue.value === "") {
         alert("대출이자율을 입력해 주세요.")
-        return
-    } else if (timeValue.value > "20") {
-        alert("법정 최고금리는 20%입니다.")
         return
     }
 
     setTimeout(function () {
-        const fieldResult = document.querySelector(".field-result")
-        const timeResult = document.querySelector(".time-result")
-        const sumResult = document.querySelector(".sumAll")
+        const fieldResult = document.querySelector(".sumAll")
+        const interestPerMonth = document.querySelector(".interestPerMonth")
+        const sumResult = document.querySelector(".sumYear")
 
         resultSection.style.display = "block";
 
-        timeResult.innerText = Math.floor((parseInt(fieldValue.value.replaceAll(',', '')) * timeValue.value) / 100 / 12).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-        fieldResult.innerText = (parseInt(fieldValue.value.replaceAll(',', '')) + Math.floor((parseInt(fieldValue.value.replaceAll(',', ''))) * timeValue.value / 100 / 12) * parseInt(monthValue.value) * 12).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+        interestPerMonth.innerText = Math.floor((parseInt(moneyValue.value.replaceAll(',', '')) * rateValue.value) / 100 / 12).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+        fieldResult.innerText = (parseInt(moneyValue.value.replaceAll(',', '')) + Math.floor((parseInt(moneyValue.value.replaceAll(',', ''))) * rateValue.value / 100 / 12) * parseInt(yearValue.value) * 12).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 
-        sumResult.innerHTML = `${monthValue.value}년 `
+        sumResult.innerHTML = `${yearValue.value} `
     }, 0)
+}
+
+function typeReturnToInt(value) {
+    parseInt(value)
 }
 
 function copyUrl() {

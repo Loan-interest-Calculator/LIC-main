@@ -18,21 +18,34 @@
         <!-- //제목과 설명 -->
 
         <!-- 전문가와 훈련시간 입력폼 -->
-        <form class="cont-inp">
-            <p class="txt-wannabe">
-                대출액:
-                <input id="inp-field" type="text" name="num" placeholder="예) 20,000,000" onkeyup="cmaComma(this)"
+        <form class="container-inp">
+            <p class="txt-moneyValue inputP">
+                대출금액:
+                <input id="input-moneyValue" type="text" name="num" placeholder="예) 20,000,000" onkeyup="cmaComma(this)"
                     onchange="cmaComma(this)" required />원
             </p>
-            <p class="txt-month">
-                기간: <input id="input-month" type="text" placeholder="예) 2" required />년
+            <p class="txt-yearValue inputP">
+                대출기간: <input id="input-year" type="text" placeholder="예) 2" required />년
             </p>
-            <p class=" txt-time">
+            <p class=" txt-rateValue inputP">
                 대출이자:
-                <input id="inp-time" type="text" placeholder="예) 16" required />%
-
+                <input id="input-rate" type="text" placeholder="예) 16" required />%
             </p>
             <p class="txt-disclaimer">※법정 최고이자율은 20%입니다.</p>
+            <section class="bill-type">
+                <p>
+                    <label for="원리금균등">원리금균등상환</label>
+                    <input id="원리금균등" type="radio" name="gener ">
+                </p>
+                <p>
+                    <label for="원금균등">원금균등상환</label>
+                    <input id="원금균등" type="radio" name="gener ">
+                </p>
+                <p>
+                    <label for="원금만기일시">원금만기일시상환</label>
+                    <input id="원금만기일시" type="radio" name="gener ">
+                </p>
+            </section>
             <button type="button" class="btn-exc">
                 매월 납부할 이자는?
             </button>
@@ -40,12 +53,12 @@
         <!-- //전문가와 훈련시간 입력폼 -->
 
         <!-- 결과 확인 화면 -->
-        <section class="cont-result">
+        <section class="container-result">
             <h2 class="blind">결과 확인</h2>
-            <p class="txt-wannabe">
-                <strong class="sumAll">년</strong>동안의 이자와 원금을 합산한 총액은
-                <strong class="field-result" name="num"><br></strong>원 입니다. <br>
-                매월 <strong class="time-result"></strong>
+            <p class="txt-moneyValue">
+                <strong class="sumYear"></strong>년동안의 이자와 원금을 합산한 총액은
+                <strong class="sumAll" name="num"><br></strong>원 입니다. <br>
+                매월 <strong class="interestPerMonth"></strong>
                 원씩 이자를 납부하게 됩니다.
                 <br>
             </p>
@@ -55,7 +68,7 @@
         <!-- //결과 확인 화면 -->
 
         <!-- 회사 및 저작권 정보 -->
-        <footer class="cont-footer">
+        <footer class="container-footer">
             <img class="img-footer" src="img/xb.png" alt="" />
             <p class="txt-footer">
                 &#8251; 본 서비스 내 이미지? 콘텐츠? 저작권 어디있는지 잘몰?루겠네요
