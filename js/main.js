@@ -55,7 +55,7 @@ function commaSplit(n) {// 콤마 나누는 부분
 }
 
 const rateValueConfine = document.querySelector("#input-rate")
-rateValueConfine.addEventListener('keyup', (value) => {
+rateValueConfine.addEventListener('keyup', () => {
     rateValueConfine.value = rateValueConfine.value.replace(/\D/g, '');
     if (rateValueConfine.value > 20) {
         rateValueConfine.value = 20;
